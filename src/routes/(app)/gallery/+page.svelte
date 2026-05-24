@@ -10,10 +10,7 @@
         {
             eager: true,
             query: {
-                enhanced: true,
-                effort: "max",
-                quality: 80,
-                //format: "webp"
+                enhanced: true
             }
         }
     );

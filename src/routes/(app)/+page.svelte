@@ -1,8 +1,7 @@
 <script>
-    // dev note: add "&format=webp" for speedup
-    import background from "$lib/assets/image.png?enhanced&effort=max&quality=80";
-    import anton from "$lib/assets/anton_grayscale.png?enhanced&effort=max&quality=80";
-    import signature from "$lib/assets/signature.png?enhanced&effort=max&quality=80";
+    import background from "$lib/assets/image.png?enhanced";
+    import anton from "$lib/assets/anton_grayscale.png?enhanced";
+    import signature from "$lib/assets/signature.png?enhanced";
 </script>
 
 <svelte:head>

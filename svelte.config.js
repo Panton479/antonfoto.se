@@ -1,5 +1,6 @@
 import { markdocPreprocess } from "markdoc-svelte";
 import adapter from "@sveltejs/adapter-static";
+import { DEV } from "./utils.js";
 
 /** @type {import("@sveltejs/kit").Config} */
 const config = {
@@ -18,7 +19,7 @@ const config = {
         ".md"
     ],
     paths: {
-        base: process.argv.includes("dev") ? "" : process.env.BASE_PATH
+        base: DEV ? "" : process.env.BASE_PATH
     }
 };
 
