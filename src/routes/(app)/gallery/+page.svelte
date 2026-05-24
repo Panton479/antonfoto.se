@@ -100,7 +100,7 @@
 
 <div id="image-popup" style:display={popupDisplay} style:opacity={popupOpacity}>
     <!-- svelte-ignore a11y_missing_attribute -->
-    <enhanced:img src={images[selected].default} style:transform={popupTransform} decoding="async" fetchpriority="high" />
+    <enhanced:img src={images[selected].default} style:transform={popupTransform} fetchpriority="high" />
     
     <button id="image-close" onclick={img_close}>
         <IcRoundClose />
@@ -162,8 +162,8 @@
     #image-popup enhanced\:img {
         width: auto;
         height: auto;
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
         transition: transform 250ms;
     }
     #image-popup button {
@@ -209,7 +209,9 @@
     #image-close-target {
         z-index: 250;
     }
-    #image-popup enhanced\:img, #image-popup button {
+    #image-popup enhanced\:img,
+    #image-popup :global(picture),
+    #image-popup button {
         z-index: 300;
     }
 
