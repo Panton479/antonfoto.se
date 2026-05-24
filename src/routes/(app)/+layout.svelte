@@ -20,7 +20,7 @@
 
 <footer>
     <p>Anton Duvemar &copy; {new Date().getFullYear()}</p>
-    <p>Made by <a href="https://cheese.nu">ThaCheeseBun</a></p>
+    <p>Skapad av <a href="https://cheese.nu">ThaCheeseBun</a></p>
 </footer>
 
 <style>
