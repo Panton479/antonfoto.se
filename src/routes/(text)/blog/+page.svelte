@@ -50,9 +50,15 @@
     }
     .post {
         display: block;
+        color: var(--accent);
+        text-decoration: none;
     }
     .post-title {
         margin-bottom: 0;
+        color: var(--link);
+    }
+    .post:hover .post-title {
+        text-decoration: underline;
     }
     .post-date {
         font-style: italic;

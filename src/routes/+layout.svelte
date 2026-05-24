@@ -58,6 +58,17 @@
         margin: 0;
     }
 
+    header a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid;
+        border-color: transparent;
+        transition: border-color 100ms;
+    }
+    header a:hover {
+        border-color: var(--accent);
+    }
+
     @media screen and (max-width: 500px) {
         footer {
             display: block;

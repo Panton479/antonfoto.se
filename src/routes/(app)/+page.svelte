@@ -14,7 +14,7 @@
     <div id="top-gradient"></div>
 </div>
 
-<div id="about">
+<main>
     <div>
         <h1>Tjena!</h1>
         <p>Jag heter Anton och är 19 år. Mina två stora intressen i livet är musik och foto. Jag spelar inga instrument utan gillar mer att samla på musik, samt fota konserter. Det jag fotar mest är konserter och arkitektur.</p>
@@ -23,7 +23,7 @@
     <div>
         <enhanced:img id="about-guy" src={anton} alt="Gråskalig bild på en människa som sitter på en säng" />
     </div>
-</div>
+</main>
 
 <style>
     #top {
@@ -51,10 +51,10 @@
         left: 0;
         width: 100%;
         height: 40vh;
-        background-image: linear-gradient(to bottom, transparent, black);
+        background-image: linear-gradient(to bottom, transparent, var(--background));
     }
 
-    #about {
+    main {
         display: grid;
         grid-template-columns: 2fr 1fr;
         max-width: 1200px;
@@ -63,7 +63,7 @@
         text-align: justify;
         column-gap: 1rem;
     }
-    #about p {
+    main p {
         font-size: 13pt;
     }
 
@@ -81,7 +81,7 @@
         }
     }
     @media screen and (max-width: 600px) {
-        #about {
+        main {
             display: block;
         }
         #about-guy {

@@ -84,15 +84,17 @@
     <title>Galleri | Anton Foto</title>
 </svelte:head>
 
-<ul id="images">
-    {#each images as img, i}
-    <li>
-        <button onclick={() => img_click(i)} title={names[i]}>
-            <enhanced:img src={img.default} alt={names[i]} loading="lazy" />
-        </button>
-    </li>
-    {/each}
-</ul>
+<main>
+    <ul id="images">
+        {#each images as img, i}
+        <li>
+            <button onclick={() => img_click(i)} title={names[i]}>
+                <enhanced:img src={img.default} alt={names[i]} loading="lazy" />
+            </button>
+        </li>
+        {/each}
+    </ul>
+</main>
 
 <div id="image-popup" style:display={popupDisplay} style:opacity={popupOpacity}>
     <enhanced:img src={images[selected].default} alt="" style:transform={popupTransform} loading="eager" />
@@ -132,7 +134,7 @@
         transition-property: transform, filter;
         transition-duration: 100ms;
     }
-    #images button:hover enhanced\:img {
+    #images button:hover:not(:focus) enhanced\:img {
         filter: brightness(0.8);
         transform: scale(1.1);
     }
@@ -183,7 +185,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-        #images button:hover enhanced\:img {
+        #images button:hover:not(:focus) enhanced\:img {
             transform: none;
         }
         #image-popup enhanced\:img {
