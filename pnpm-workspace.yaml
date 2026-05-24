@@ -5,4 +5,3 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
 minimumReleaseAge: 240
-#"@sveltejs/enhanced-img": "github:ThaCheeseBun/sveltekit#path:/packages/enhanced-img",
