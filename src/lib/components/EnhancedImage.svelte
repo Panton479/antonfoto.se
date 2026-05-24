@@ -3,7 +3,7 @@
 
     // import all images in assets folder
     const imports = import.meta.glob(
-        "$lib/assets/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
+        "$lib/assets/*.{avif,AVIF,gif,GIF,heif,HEIF,jpeg,JPEG,jpg,JPG,png,PNG,tiff,TIFF,webp,WEBP}",
         {
             eager: true,
             query: {

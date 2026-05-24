@@ -6,7 +6,7 @@
 
     // import all images under gallery folder
     const imports = import.meta.glob(
-        "$lib/gallery/*.{avif,gif,heif,jpeg,jpg,png,tiff,webp}",
+        "$lib/gallery/*.{avif,AVIF,gif,GIF,heif,HEIF,jpeg,JPEG,jpg,JPG,png,PNG,tiff,TIFF,webp,WEBP}",
         {
             eager: true,
             query: {
@@ -34,7 +34,7 @@
 
     // button functions
     function img_click(i, delay = true) {
-        location.hash = names[i];
+        location.hash = encodeURIComponent(names[i]);
         selected = i;
         popupDisplay = undefined;
         if (delay) {
@@ -58,19 +58,19 @@
     function img_prev() {
         if (selected > 0) {
             selected -= 1;
-            location.hash = names[selected];
+            location.hash = encodeURIComponent(names[selected]);
         }
     }
     function img_next() {
         if (selected < images.length - 1) {
             selected += 1;
-            location.hash = names[selected];
+            location.hash = encodeURIComponent(names[selected]);
         }
     }
 
     onMount(() => {
         if (location.hash?.length > 1) {
-            const lookup = names.indexOf(location.hash.substring(1));
+            const lookup = names.indexOf(decodeURIComponent(location.hash.substring(1)));
             if (lookup < 0) {
                 location.hash = "";
             } else {
@@ -89,15 +89,19 @@
         {#each images as img, i}
         <li>
             <button onclick={() => img_click(i)} title={names[i]}>
-                <enhanced:img src={img.default} alt={names[i]} loading="lazy" />
+                <!-- svelte-ignore a11y_missing_attribute -->
+                <enhanced:img src={img.default} loading="lazy" decoding="async" />
             </button>
         </li>
         {/each}
     </ul>
 </main>
 
+
 <div id="image-popup" style:display={popupDisplay} style:opacity={popupOpacity}>
-    <enhanced:img src={images[selected].default} alt="" style:transform={popupTransform} loading="eager" />
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <enhanced:img src={images[selected].default} style:transform={popupTransform} decoding="async" fetchpriority="high" />
+    
     <button id="image-close" onclick={img_close}>
         <IcRoundClose />
     </button>
@@ -107,6 +111,10 @@
     <button id="image-next" onclick={img_next} disabled={disableNext}>
         <IcRoundChevronRight />
     </button>
+
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div id="image-close-target" onclick={img_close}></div>
 </div>
 
 <style>
@@ -146,13 +154,16 @@
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0.8);
-        z-index: 999;
         transition: opacity 250ms;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     #image-popup enhanced\:img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
         transition: transform 250ms;
     }
     #image-popup button {
@@ -182,6 +193,24 @@
     }
     #image-next {
         right: 0.5rem;
+    }
+    #image-close-target {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* layer order for popup elements*/
+    #image-popup {
+        z-index: 200;
+    }
+    #image-close-target {
+        z-index: 250;
+    }
+    #image-popup enhanced\:img, #image-popup button {
+        z-index: 300;
     }
 
     @media (prefers-reduced-motion: reduce) {

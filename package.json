@@ -16,7 +16,7 @@
 		"@iconify-svelte/ic": "^1.0.3",
 		"@markdoc/markdoc": "^0.5.7",
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/enhanced-img": "github:ThaCheeseBun/sveltekit#path:/packages/enhanced-img",
+		"@sveltejs/enhanced-img": "file:../sveltekit/packages/enhanced-img",
 		"@sveltejs/kit": "^2.61.1",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"markdoc-svelte": "^4.2.0",

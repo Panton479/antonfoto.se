@@ -9,7 +9,8 @@
 </svelte:head>
 
 <div id="top">
-    <enhanced:img id="bakground" src={background} alt="" />
+    <!-- svelte-ignore a11y_missing_attribute -->
+    <enhanced:img id="bakground" src={background} />
     <enhanced:img id="signature" src={signature} alt="Signatur av namnet Anton" />
     <div id="top-gradient"></div>
 </div>

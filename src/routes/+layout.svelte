@@ -29,7 +29,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 2rem;
-        z-index: 999;
+        z-index: 100;
         font-size: 16pt;
         text-shadow: 1px 1px 2px var(--background);
     }
