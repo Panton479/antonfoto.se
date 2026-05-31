@@ -13,5 +13,6 @@
         margin: 0 auto;
         padding: 0 2rem;
         line-height: 1.4;
+        overflow-wrap: anywhere;
     }
 </style>
